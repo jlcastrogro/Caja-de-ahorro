@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head :: head"></head>
+<body id="page-top">
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul th:replace="fragments/sidebar :: sidebar"></ul>
+		<div id="content-wrapper">
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index.html">Inicio</a>
+					</li>
+					<li class="breadcrumb-item active">Página en blanco</li>
+				</ol>
+				<!-- Page Content -->
+				<h1>Página en blanco</h1>
+				<hr>
+				<p>Este puede ser un buen inicio.</p>
+			</div>
+			<!-- Footer -->
+			<footer th:replace="fragments/footer :: footer"></footer>
+		</div>
+	</div>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+	<!-- Logout Modal-->
+	<div th:replace="fragments/sidebar :: logoutmodal"></div>
+	<!-- Scripts -->
+	<div th:replace="fragments/js :: js"></div>
+</body>
+
+</html>

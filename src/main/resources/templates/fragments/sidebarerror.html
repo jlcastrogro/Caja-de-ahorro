@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>SideBar</title>
+<!-- Bootstrap core CSS-->
+<link href="#" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link href="#" th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+<!-- Custom styles for this template-->
+<link href="#" th:href="@{/css/sb-admin.css}" rel="stylesheet">
+</head>
+<body>
+	<ul class="sidebar navbar-nav" th:fragment="sidebar">
+		<li class="nav-item">
+			<a class="nav-link" href="#" th:href="@{/home}">
+				<i class="fas fa-fw fa-home"> </i>
+				<span>Inicio</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#" th:href="@{/account}">
+				<i class="fas fa-fw fa-user-circle"></i>
+				<span>Cuenta</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+				<i class="fas fa-fw fa-sign-out-alt"></i>
+				<span>Cerrar sesión</span>
+			</a>
+		</li>
+	</ul>
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" th:fragment="logoutmodal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Seleccione "Salir" si está listo para finalizar la sesión actual.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+					<!-- <a class="btn btn-primary" href="#" th:href="@{/login?logout}">Salir</a> -->
+					<form th:action="@{/logout}" method="POST">
+						<button class="btn btn-primary" type="submit">Salir</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- JS -->
+	<div th:insert="fragments/js :: js"></div>
+</body>
+</html>

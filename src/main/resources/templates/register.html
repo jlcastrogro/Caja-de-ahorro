@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head :: head"></head>
+<body class="bg-dark">
+	<div class="container">
+		<div class="card card-register mx-auto mt-5">
+			<div class="card-header text-center">Registrar una cuenta</div>
+			<div class="card-body">
+				<div th:if="${error != null}" class="alert alert-warning" role="alert">Nombre de usuario ya registrado</div>
+				<form action="#" th:action="@{/registercheck}" th:object="${usuarioModel}" method="post">
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<div class="form-label-group">
+									<input type="text" id="firstName" class="form-control" placeholder="Nombres" required="required" autofocus="autofocus" th:field="*{nombres}" pattern="([a-zA-Z ñáéíóú]{2,60})">
+									<label for="firstName">Nombres</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-label-group">
+									<input type="text" id="lastName" class="form-control" placeholder="Apellidos" required="required" th:field="*{apellidos}" pattern="([a-zA-Z ñáéíóú]{2,60})">
+									<label for="lastName">Apellidos</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md">
+								<div class="form-label-group">
+									<input type="text" id="inputUsername" class="form-control" placeholder="Nombre de usuario" required="required" th:field="*{nombreusuario}">
+									<label for="inputUsername">Nombre de usuario</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md">
+								<div class="form-label-group">
+									<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="required" th:field="*{contrasenia}">
+									<label for="inputPassword">Contraseña</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md">
+								<div class="form-label-group">
+									<select id="rol" name="rol" th:with="rol=*{rol}" class="form-control" required="required">
+										<option value="" th:disabled="disabled" selected="selected">Seleccione tipo de usuario</option>
+										<option th:value="ROLE_CLIENTE">Cliente</option>
+										<option th:value="ROLE_ADMIN">Administrador</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button class="btn btn-primary btn-block" type="submit">Registrar</button>
+				</form>
+			</div>
+			<div class="card-footer text-center">
+				<!-- <div class="text-center"> -->
+				<a class="d-block small" href="#" th:href="@{/login}">Iniciar de sesión</a>
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+	<!-- Scripts -->
+	<div th:replace="fragments/js :: js"></div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head :: head"></head>
+<body id="page-top">
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul th:replace="fragments/sidebaradmin :: sidebar"></ul>
+		<div id="content-wrapper">
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="#" th:href="@{/home}">Inicio</a>
+					</li>
+					<li class="breadcrumb-item active">Movimientos de caja</li>
+				</ol>
+				<!-- Page Content -->
+				<h1>Movimientos de caja</h1>
+				<hr>
+				<div class="container">
+					<div th:if="${error != null}" class="alert alert-warning" role="alert">Imposible realizar el movimiento</div>
+					<div th:if="${success != null}" class="alert alert-info" role="alert">Movimiento realizado exitosamente</div>
+					<div class="card card-register mx-auto mt-5">
+						<div class="card-body">
+							<form action="#" th:action="@{/cash}" th:object="${movimientoCajaModel}" method="POST">
+								<div class="form-group">
+									<div class="form-row">
+										<div class="col-md">
+											<div class="form-label-group">
+												<input type="text" id="inputMount" class="form-control" placeholder="Cantidad a mover" required="required" autofocus="autofocus" th:field="*{cantidad}" pattern="(?=.*[1-9])\d*(?:\.\d*)?"
+													title="Es necesario un dígito positivo">
+												<label for="inputMount">Cantidad a mover</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="form-row">
+										<div class="col-md">
+											<div class="form-label-group">
+												<select id="tipo" name="tipo" th:with="tipo=*{tipo}" class="form-control" required="required">
+													<option value="" th:disabled="disabled" selected="selected">Seleccione tipo de dinero a mover</option>
+													<option th:value="ahorro">Dinero en caja</option>
+													<option th:value="prestamo">Dinero en préstamo</option>
+													<option th:value="retencion">Dinero en retención</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="form-row">
+										<div class="col-md">
+											<div class="form-label-group">
+												<select id="modo" name="modo" th:with="modo=*{modo}" class="form-control" required="required">
+													<option value="" th:disabled="disabled" selected="selected">Seleccione modo</option>
+													<option th:value="sumar">Agregar</option>
+													<option th:value="restar">Quitar</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<button class="btn btn-primary btn-block" type="submit">Aceptar</button>
+								<a class="btn btn-secondary btn-block" href="/home">Cancelar</a>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Footer -->
+			<footer th:replace="fragments/footer :: footer"></footer>
+		</div>
+	</div>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+	<!-- Logout Modal-->
+	<div th:replace="fragments/sidebar :: logoutmodal"></div>
+	<!-- Scripts -->
+	<div th:replace="fragments/js :: js"></div>
+</body>
+
+</html>

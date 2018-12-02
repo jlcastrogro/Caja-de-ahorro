@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head :: head"></head>
+<body id="page-top">
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul th:replace="fragments/sidebar :: sidebar"></ul>
+		<div id="content-wrapper">
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="#">Inicio</a>
+					</li>
+					<li class="breadcrumb-item active">Gráficas</li>
+				</ol>
+				<!-- Area Chart Example-->
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fas fa-chart-area"></i> Ejemplo de una gráfica de área
+					</div>
+					<div class="card-body">
+						<canvas id="myAreaChart" width="100%" height="30"></canvas>
+					</div>
+					<div class="card-footer small text-muted">Actualizado ayer a las 11:59 PM</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="card mb-3">
+							<div class="card-header">
+								<i class="fas fa-chart-bar"></i> Ejemplo de una gráfica de barras
+							</div>
+							<div class="card-body">
+								<canvas id="myBarChart" width="100%" height="50"></canvas>
+							</div>
+							<div class="card-footer small text-muted">Actualizado ayer a las 11:59 PM</div>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="card mb-3">
+							<div class="card-header">
+								<i class="fas fa-chart-pie"></i> Ejemplo de una gráfica de pastel
+							</div>
+							<div class="card-body">
+								<canvas id="myPieChart" width="100%" height="100"></canvas>
+							</div>
+							<div class="card-footer small text-muted">Actualizado ayer a las 11:59 PM</div>
+						</div>
+					</div>
+				</div>
+				<p class="small text-center text-muted my-5">
+					<em>Próximamente más gráficas...</em>
+				</p>
+			</div>
+			<!-- Footer -->
+			<footer th:replace="fragments/footer :: footer"></footer>
+		</div>
+	</div>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+	<!-- Logout Modal-->
+	<div th:replace="fragments/sidebar :: logoutmodal"></div>
+	<!-- Scripts -->
+	<div th:replace="fragments/js :: js"></div>
+</body>
+
+</html>

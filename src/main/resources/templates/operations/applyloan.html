@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head :: head"></head>
+<body id="page-top">
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul th:replace="fragments/sidebar :: sidebar"></ul>
+		<div id="content-wrapper">
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="#" th:href="@{/home}">Inicio</a>
+					</li>
+					<li class="breadcrumb-item active">Solicitar préstamo</li>
+				</ol>
+				<!-- Page Content -->
+				<h1>Solicitar préstamo</h1>
+				<hr>
+				<div class="container">
+					<div th:if="${success != null}" class="alert alert-success" role="alert">Préstamo exitoso</div>
+					<div th:if="${error != null}" class="alert alert-danger" role="alert">Recursos insuficientes en caja o en cuenta</div>
+					<div class="card card-register mx-auto mt-5">
+						<!-- <div class="card-header text-center">Depósito a cuenta</div> -->
+						<div class="card-body">
+							<form action="#" th:action="@{/operation/applyloan}" th:object="${prestamoModel}" method="POST">
+								<!-- <form action="#" method="post"> -->
+								<div class="form-group">
+									<div class="form-row">
+										<div class="col-md">
+											<div class="form-label-group">
+												<input type="text" id="inputMount" class="form-control" placeholder="Cantidad a solicitar" required="required" autofocus="autofocus" th:field="*{monto}" pattern="(?=.*[1-9])\d*(?:\.\d{1,2})?"
+													title="Es necesaria un cifra positiva, con 2 decimales como máximo"> <label for="inputMount">Cantidad a solicitar</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="form-row">
+										<div class="col-md">
+											<select id="plazo" name="plazo" th:with="plazo=*{plazo}" class="form-control" required="required">
+												<option value="" th:disabled="disabled" selected="selected">Seleccione un plazo</option>
+												<option th:value="3">3 meses</option>
+												<option th:value="6">6 meses</option>
+												<option th:value="9">9 meses</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<button class="btn btn-primary btn-block" type="submit">Aceptar</button>
+								<a class="btn btn-secondary btn-block" href="/home">Cancelar</a>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Footer -->
+			<footer th:replace="fragments/footer :: footer"></footer>
+		</div>
+	</div>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+	<!-- Logout Modal-->
+	<div th:replace="fragments/sidebar :: logoutmodal"></div>
+	<!-- Scripts -->
+	<div th:replace="fragments/js :: js"></div>
+</body>
+
+</html>

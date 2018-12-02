@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head :: head"></head>
+<body id="page-top">
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul th:replace="fragments/sidebar :: sidebar"></ul>
+		<div id="content-wrapper">
+			<!-- Content -->
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="#">Inicio</a>
+					</li>
+					<li class="breadcrumb-item active">Resumen</li>
+				</ol>
+				<!-- Account status  -->
+				<div class="container">
+					<div class="row justify-content-md-center">
+						<div class="card card-registermt-3 mb-3 mt-3">
+							<div class="card-header text-center">Estado de cuenta</div>
+							<div class="card-body">
+								<div>
+									<span th:text="|Dinero en cuenta: $${cliente.dineroahorro} pesos|"></span>
+								</div>
+								<div>
+									<span th:text="|Dinero en préstamo: $${cliente.dineroprestamo} pesos|"></span>
+								</div>
+								<div>
+									<span th:text="|Dinero retenido: $${cliente.dineroretenido} pesos|"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card mb-3">
+					<div class="card-header text-center">
+						<i class="fas fa-table"></i> Transacciones recientes
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Tipo</th>
+										<th>Monto</th>
+										<th>Fecha</th>
+										<th>Estado</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="operacion: ${operaciones}">
+										<td th:text="${operacion.id}"></td>
+										<td th:text="${operacion.tipo}"></td>
+										<td th:text="|$${operacion.monto} pesos|"></td>
+										<td th:text="${operacion.fecha}"></td>
+										<td th:text="${operacion.estado}"></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th>ID</th>
+										<th>Tipo</th>
+										<th>Monto</th>
+										<th>Fecha</th>
+										<th>Estado</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Footer -->
+			<footer th:replace="fragments/footer :: footer"></footer>
+		</div>
+	</div>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+	<!-- Logout Modal-->
+	<div th:replace="fragments/sidebar :: logoutmodal"></div>
+	<!-- Scripts -->
+	<div th:replace="fragments/js :: js"></div>
+</body>
+</html>

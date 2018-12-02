@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head :: head"></head>
+<body id="page-top">
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul th:replace="fragments/sidebarerror :: sidebar"></ul>
+		<div id="content-wrapper">
+			<!-- Content -->
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="#" th:href="@{/home}">Inicio</a>
+					</li>
+					<li class="breadcrumb-item active">Error 404</li>
+				</ol>
+				<!-- Page Content -->
+				<h1 class="display-1">404</h1>
+				<p class="lead">
+					Página no encontrada. Puede
+					<a href="javascript:history.back()">regresar</a>
+					a la página anterior o
+					<a href="#" th:href="@{/home}"> a Inicio</a>
+					.
+				</p>
+			</div>
+			<!-- Footer -->
+			<footer th:replace="fragments/footer :: footer"></footer>
+		</div>
+	</div>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"> </i>
+	</a>
+	<!-- Logout Modal-->
+	<div th:replace="fragments/sidebar :: logoutmodal"></div>
+	<!-- Scripts -->
+	<div th:replace="fragments/js :: js"></div>
+</body>
+</html>

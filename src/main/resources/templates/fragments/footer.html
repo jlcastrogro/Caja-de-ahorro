@@ -1,0 +1,30 @@
+<!DOCTYPE html >
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Footer</title>
+<!-- Bootstrap core CSS-->
+<link href="#" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link href="#" th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+<!-- Custom styles for this template-->
+<link href="#" th:href="@{/css/sb-admin.css}" rel="stylesheet">
+</head>
+<body>
+	<footer class="sticky-footer" th:fragment="footer">
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<i class="fas fa-fw fa-code"></i>
+				<span> jlcastrogro © 2018 </span>
+				<i class="fas fa-fw fa-code"></i> Template by
+				<a href="https://startbootstrap.com">startbootstrap.com</a>
+			</div>
+		</div>
+	</footer>
+	<div th:insert="fragments/js :: js"></div>
+</body>
+</html>

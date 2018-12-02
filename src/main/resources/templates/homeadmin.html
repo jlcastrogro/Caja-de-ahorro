@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head :: head"></head>
+<body id="page-top">
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul th:replace="fragments/sidebaradmin :: sidebar"></ul>
+		<div id="content-wrapper">
+			<!-- Content -->
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="#">Inicio</a>
+					</li>
+					<li class="breadcrumb-item active">Resumen</li>
+				</ol>
+				<!-- Account status  -->
+				<div class="container">
+					<div class="row justify-content-md-center">
+						<div class="card card-registermt-3 mb-3 mt-3">
+							<div class="card-header text-center">Estado de caja</div>
+							<div class="card-body">
+								<div>
+									<span th:text="|Dinero en caja: $${ahorro} pesos|"></span>
+								</div>
+								<div>
+									<span th:text="|Dinero en préstamo: $${prestamo} pesos|"></span>
+								</div>
+								<div>
+									<span th:text="|Dinero retenido: $${retencion} pesos|"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Icon Cards-->
+				<!-- <div class="row">
+					<div class="col-xl-3 col-sm-6 mb-3">
+						<div class="card text-white bg-primary o-hidden h-100">
+							<div class="card-body">
+								<div class="card-body-icon">
+									<i class="fas fa-fw fa-comments"></i>
+								</div>
+								<div class="mr-5">¡26 Mensajes Nuevos!</div>
+							</div>
+							<a class="card-footer text-white clearfix small z-1" href="#"> <span class="float-left">Ver detalles</span> <span class="float-right"> <i class="fas fa-angle-right"></i>
+							</span>
+							</a>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 mb-3">
+						<div class="card text-white bg-warning o-hidden h-100">
+							<div class="card-body">
+								<div class="card-body-icon">
+									<i class="fas fa-fw fa-list"></i>
+								</div>
+								<div class="mr-5">¡11 Nuevas Tareas!</div>
+							</div>
+							<a class="card-footer text-white clearfix small z-1" href="#"> <span class="float-left">Ver detalles</span> <span class="float-right"> <i class="fas fa-angle-right"></i>
+							</span>
+							</a>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 mb-3">
+						<div class="card text-white bg-success o-hidden h-100">
+							<div class="card-body">
+								<div class="card-body-icon">
+									<i class="fas fa-fw fa-shopping-cart"></i>
+								</div>
+								<div class="mr-5">¡123 Nuevas Ordenes!</div>
+							</div>
+							<a class="card-footer text-white clearfix small z-1" href="#"> <span class="float-left">Ver detalles</span> <span class="float-right"> <i class="fas fa-angle-right"></i>
+							</span>
+							</a>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 mb-3">
+						<div class="card text-white bg-danger o-hidden h-100">
+							<div class="card-body">
+								<div class="card-body-icon">
+									<i class="fas fa-fw fa-life-ring"></i>
+								</div>
+								<div class="mr-5">¡13 Nuevos Boletos!</div>
+							</div>
+							<a class="card-footer text-white clearfix small z-1" href="#"> <span class="float-left">Ver detalles</span> <span class="float-right"> <i class="fas fa-angle-right"></i>
+							</span>
+							</a>
+						</div>
+					</div>
+				</div> -->
+				<!-- Area Chart Example-->
+				<!-- <div class="card mb-3">
+					<div class="card-header">
+						<i class="fas fa-chart-area"></i>
+						Ejemplo de gráfica de área
+					</div>
+					<div class="card-body">
+						<canvas id="myAreaChart" width="100%" height="30"></canvas>
+					</div>
+					<div class="card-footer small text-muted">Actualizado 11:59 PM</div>
+				</div> -->
+				<!-- DataTables Example -->
+				<div class="card mb-3">
+					<div class="card-header text-center">
+						<i class="fas fa-table"></i> Transacciones recientes
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Cliente</th>
+										<th>Tipo</th>
+										<th>Monto</th>
+										<th>Fecha</th>
+										<th>Estado</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="operacion: ${operaciones}">
+										<td th:text="${operacion.id}"></td>
+										<td th:text="${operacion.cliente}"></td>
+										<td th:text="${operacion.tipo}"></td>
+										<td th:text="|$${operacion.monto} pesos|"></td>
+										<td th:text="${operacion.fecha}"></td>
+										<td th:text="${operacion.estado}"></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th>ID</th>
+										<th>Cliente</th>
+										<th>Tipo</th>
+										<th>Monto</th>
+										<th>Fecha</th>
+										<th>Estado</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					<!-- <div class="card-footer small text-muted">Actualizado 11:59 PM</div> -->
+				</div>
+			</div>
+			<!-- Footer -->
+			<footer th:replace="fragments/footer :: footer"></footer>
+		</div>
+	</div>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+	<!-- Logout Modal-->
+	<div th:replace="fragments/sidebar :: logoutmodal"></div>
+	<!-- Scripts -->
+	<div th:replace="fragments/js :: js"></div>
+</body>
+</html>
